@@ -124,6 +124,12 @@ class TestLeft(unittest.TestCase):
         with self.assertRaises(TypeError):
             l.getValue()
 
+    def test_isLeft(self):
+        l = Left('a')
+        self.assertTrue(l.isLeft())
+        r = Right('a')
+        self.assertFalse(r.isLeft())
+
     def test_getOrElse(self):
         l = Left(None)
         self.assertEqual(l.getOrElse('other'), 'other')
@@ -160,6 +166,12 @@ class TestRight(unittest.TestCase):
     def test_getValue(self):
         r = Right('a')
         self.assertEqual(r.getValue(), 'a')
+
+    def test_isRight(self):
+        r = Right('a')
+        self.assertTrue(r.isRight())
+        l = Left('a')
+        self.assertFalse(l.isRight())
 
     def test_getOrElse(self):
         r = Right('a')

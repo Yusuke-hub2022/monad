@@ -99,6 +99,12 @@ class Either:
     def getValue(self):
         return self.value
 
+    def isLeft(self):
+        return type(self) == Left
+
+    def isRight(self):
+        return type(self) == Right
+
 class Left(Either):
     def map(self, _):
         return self
